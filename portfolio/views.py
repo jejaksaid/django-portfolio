@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from .models import Images
+
 
 def home(request):
-
-    return render(request, "index.html")
+    context = {}
+    images = Images.objects.all()
+    context["images"] = images
+    return render(request, "index.html", context)
